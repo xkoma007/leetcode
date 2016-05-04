@@ -21,27 +21,37 @@ class Solution(object):
         rlist =  self.getListFromValue(m + n)
         return rlist
 
-    def getListFromValue(self, value):
-        m_list =  ListNode([])
-        while value/10 != 0:
-            m_list.append(value % 10)
-            value =  value / 10
-        m_list.append(value % 10)
-        return m_list
+    def getListFromValue(self, val):
+        m_initnode = ListNode(0)
+        m_node = m_initnode
+        while val/10 != 0:
+            m_node.val = val % 10
+            val =  val / 10
+            m_newnode = ListNode(0)
+            m_node.next = m_newnode
+            m_node = m_newnode
+        m_node.val = val % 10
+        m_node.next = None
+
+        return m_initnode
+
         
-    def getValueFromList(self,linklist):
-        nRet ,count = 0,0
+    def getValueFromList(self,node):
+        nRet, count = 0,0
         nBase = 10
-        for n in xrange(len(linklist)):
-            nRet += linklist[n] * (nBase ** count)
+        
+        while node.next != None:
+            nRet += node.val * (nBase ** count)
             count = count + 1
-            
+            node = node.next
+        nRet += node.val * (nBase ** count)
+        
         return nRet    
 
-m =  Solution()
-a =  ListNode([1, 8])
-b =  ListNode([0])
-print m.addTwoNumbers(a, b)
+# m =  Solution()
+# a =  ListNode([2, 4, 3])
+# b =  ListNode([5, 6, 4])
+# print m.addTwoNumbers(a, b).val
     
 
     
