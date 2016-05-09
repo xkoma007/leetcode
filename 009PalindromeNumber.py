@@ -23,12 +23,3 @@ class Solution(object):
 
 sol = Solution()
 print sol.isPalindrome(-2147447412)
-
-            
-            
-            
-            
-            
-        
-        
-        
