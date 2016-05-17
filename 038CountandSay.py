@@ -8,27 +8,31 @@ class Solution(object):
             return "1"
 
         m_str = "1"
+
         for j in range(1, n):
             m_len = len(m_str)
             start_pos = 0
             m_newlist = []
-
             while start_pos < m_len:
-                if m_str[start_pos] == '2':
-                    m_newlist.append("12")
-                    start_pos += 1
-                elif m_str[start_pos] == '1':
-                    if (start_pos + 1 < m_len) and m_str[start_pos + 1] == '1':
-                        m_newlist.append("21")
-                        start_pos += 2
+                m_num = m_str[start_pos]
+                count = 1
+                # check the same number count
+                while start_pos < m_len:
+                    if start_pos + 1 < m_len:
+                        if m_str[start_pos + 1] == m_str[start_pos]:
+                            start_pos += 1
+                            count += 1
+                        else:
+                            break
                     else:
-                        m_newlist.append("11")
-                        start_pos += 1
-
+                        break
+                m_value = str(count) + m_num
+                m_newlist.append(m_value)
+                start_pos += 1
             m_str = "".join(m_newlist)
 
         return m_str
 
 
 a = Solution()
-print a.countAndSay(6)
+print a.countAndSay(4)
