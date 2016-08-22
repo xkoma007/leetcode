@@ -1,4 +1,6 @@
+
 class Solution(object):
+    
     def threeSum(self, nums):
         """
         :type nums: List[int]
@@ -24,7 +26,8 @@ class Solution(object):
                     m_list.append(left_sum)
                     import copy
                     new_list = copy.deepcopy(m_list)
-                    new_list.sort()
+                    new_tuple = ()
+                    sorted(new_list)
                     if new_list in m_sets:
                         pass
                     else:
