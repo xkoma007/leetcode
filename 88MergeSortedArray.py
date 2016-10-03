@@ -59,6 +59,6 @@ class Solution(object):
         m_rlen = len(nums1)
         if m_rlen > m_newlen:
             del nums1[m_newlen: m_rlen]
-        return 
+        return
 c = Solution()
 print(c.merge([1,0],1,[2],1))
