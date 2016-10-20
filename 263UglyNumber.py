@@ -1,4 +1,7 @@
 class Solution(object):
+    '''
+    性质:每个大于1的自然数都可写成若干个质数的乘积
+    '''
     def isUgly(self, num):
         """
         :type num: int
