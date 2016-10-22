@@ -24,9 +24,3 @@ class Solution(object):
                     number += roman_nums[s[startPos]]
                     startPos += 1
                     i += 1
-
-                
-        
-        
-        
-
