@@ -49,5 +49,4 @@ def test():
     root.right.right = TreeNode(5)
     c = Solution()
     print(c.levelOrderBottom(root))
-
 test()
