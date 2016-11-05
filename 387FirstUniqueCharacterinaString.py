@@ -5,23 +5,21 @@ class Solution(object):
         :rtype: int
         """
         m_rel = -1
-        m_fields = dict()
+        map_s = dict()
 
         for ch in s:
-            print(ch)
-            if ch not in m_fields:
-                m_fields[ch] = 1
+            if ch not in map_s:
+                map_s[ch] = 1
             else:
-                m_fields[ch] += 1
+                map_s[ch] += 1
 
-        print(m_fields)
-        for m_index, ch in enumerate(s):
-            if m_fields[ch] == 1:
-                m_rel = m_index
+        for pos in range(len(s)):
+            if map_s[s[pos]] == 1:
+                m_rel = pos
                 break
 
         return m_rel
 
 
 f = Solution()
-print(f.firstUniqChar())
+print(f.firstUniqChar('loveleetcode'))
