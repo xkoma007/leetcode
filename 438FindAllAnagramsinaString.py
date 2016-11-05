@@ -4,38 +4,37 @@ class Solution(object):
         :type s: str
         :type p: str
         :rtype: List[int]
+        # sliding windows
         """
-        map_p = dict()
-        p_len = len(p)
-        s_len = len(s)
+        rels = []
+        map_p, map_s = dict(), dict()
+        p_len, s_len = len(p), len(s)
         for ch in p:
             if ch not in map_p:
                 map_p[ch] = 1
             else:
                 map_p[ch] = map_p[ch] + 1
-        rels = []
-        map_s = dict()
-        for i in range(s_len):
-            compare = True
-            map_s.clear()
-            if i + p_len <= s_len:
-                for j in range(i, i+p_len):
-                    if s[j] not in map_p:
-                        compare = False
-                        break
-                    else:
-                        if s[j] not in map_s:
-                            map_s[s[j]] = 1
-                        else:
-                            map_s[s[j]] = map_s[s[j]] + 1
-                if compare:
-                    success = True
-                    for ch in map_s:
-                        if map_s[ch] != map_p[ch]:
-                            success = False
-                            break
-                    if success:
-                        rels.append(i)
+
+        if s_len < p_len:
+            return rels
+        count = 0
+        while count < s_len:
+            if s[count] not in map_s:
+                map_s[s[count]] = 1
+            else:
+                map_s[s[count]] += 1
+
+            if count >= p_len:
+                map_s[s[count-p_len]] -= 1
+            if count >= p_len - 1:
+                # compare
+                success = True
+                for k in map_p.keys():
+                    if k not in map_s or map_p[k] != map_s[k]:
+                        success = False
+                if success:
+                    rels.append(count-p_len+1)
+            count += 1
         return rels
 c = Solution()
 # print(c.findAnagrams("abab", "ab"))
