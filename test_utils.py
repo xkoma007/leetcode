@@ -9,7 +9,6 @@ class TreeNode(object):
 
 
 def gen_tree_by_list(items):
-
     if not items:
         return None
     m_queue = deque([])
