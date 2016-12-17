@@ -4,7 +4,6 @@ class Solution:
 /*
         The purpose of this function is to convert an unsigned
         binary number to reflected binary Gray code.
- 
         The operator >> is shift right. The operator ^ is exclusive or.
 */
 unsigned int binaryToGray(unsigned int num)
